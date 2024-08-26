@@ -13,6 +13,11 @@ kubectl get pods --show-labels
 gke_prod logs -l app.kubernetes.io/instance=fdp-superbi-brv2 -f -c fdp-superbi-brv2 -n fdp-superbi-brv2-prod
 ```
 
+### Get pod ip
+```sh
+kubectl get pod <pod_id> --template '{{.status.podIP}}' -n <ns>
+```
+
 ### Get events
 ```sh
 gke_prod get events -n fdp-hydra-preprod --sort-by=".metadata.managedFields[0].time"
