@@ -23,6 +23,20 @@ kubectl get pod <pod_id> --template '{{.status.podIP}}' -n <ns>
 gke_prod get events -n fdp-hydra-preprod --sort-by=".metadata.managedFields[0].time"
 ```
 
+### Search for log4j logs
+1. Search for a string in a .gz log
+zgrep "Error message" app.log.2025-04-10.gz
+
+2. Search recursively through all .gz files in a directory
+find . -name "*.gz" -exec zgrep "Something went wrong" {} +
+
+3. View logs interactively
+zless app.log.2025-04-10.gz
+
+4.Decompress and pipe through grep
+zcat app.log.2025-04-10.gz | grep "ERROR"
+
+
 ## Gradle/Maven
 ## Install jar locally (Maven)
 
